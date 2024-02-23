@@ -1,12 +1,15 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/gsap@3.9.2/dist/gsap.min.js"></script>
     <title>Moon</title>
 </head>
+
 <body>
 
     <h2>KELLY<br>Click and Hold to<br>Enter Warp Speed</h2>
@@ -15,14 +18,16 @@
     <div class="moon-container">
         <div class="moon"></div>
     </div>
-    
-<audio id="background-music" controls autoplay loop>
-    <source src="Will I Ever See You Again 1.ogg" type="audio/mp3">
-    <source src="Will I Ever See You Again 2.mp3" type="audio/ogg">
-    Your browser does not support the audio tag.
-</audio>
+
+    <audio id="background-music" controls loop>
+        <source src="Will I Ever See You Again 1.ogg" type="audio/ogg">
+        <source src="Will I Ever See You Again 2.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
     <script src="./new.js"></script>
+
 </body>
+
 </html>
