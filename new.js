@@ -34,6 +34,12 @@ function init() {
     let planeGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight, 1, 1);
     let planeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 1 });
 
+
+    let audio = document.getElementById("background-music");
+    audio.addEventListener("canplaythrough", function () {
+        audio.play();
+    });
+    
     planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
     scene.add(planeMesh);
 
