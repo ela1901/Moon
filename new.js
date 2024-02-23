@@ -1,10 +1,6 @@
 // new.js
 let activated = false;
-"use strict";
-/* globals THREE, console */
-
-let camera, scene, renderer;
-let planeMesh;
+let backgroundMusic = document.getElementById('background-music');
 let stars = [];
 let colors = [
     "#0952BD",
@@ -34,12 +30,6 @@ function init() {
     let planeGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight, 1, 1);
     let planeMaterial = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 1 });
 
-
-    let audio = document.getElementById("background-music");
-    audio.addEventListener("canplaythrough", function () {
-        audio.play();
-    });
-    
     planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
     scene.add(planeMesh);
 
@@ -59,7 +49,6 @@ function init() {
         scene.add(star);
         stars.push(star);
     }
-
 }
 
 function render() {
@@ -88,8 +77,18 @@ function render() {
 init();
 render();
 
+// Agrega este bloque para reproducir y pausar la música al hacer clic
+document.getElementById('background-music').addEventListener('mousedown', function () {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play();
+    } else {
+        backgroundMusic.pause();
+    }
+});
+
 window.addEventListener("mousedown", function (event) {
     activated = true;
+    backgroundMusic.play();
 });
 
 window.addEventListener("mouseup", function (event) {
@@ -104,6 +103,7 @@ window.addEventListener("resize", function () {
 
 window.addEventListener("touchstart", function () {
     activated = true;
+    backgroundMusic.play();
 });
 
 window.addEventListener("touchend", function () {
@@ -117,10 +117,5 @@ h2.style.left = '50%';
 h2.style.transform = 'translate(-50%, -50%)';
 h2.style.zIndex = '1000';
 h2.style.color = 'white';
-TweenLite.fromTo(h2, 1.5, { opacity: 0 }, { opacity: 1, transform: 'translate(-50%, -50%)' });
-TweenLite.to(h2, 1.75, { opacity: 0, delay: 3 });
-
-
-onload = () => {
-    document.body.classList.remove("container");
-  };
+gsap.fromTo(h2, 1.5, { opacity: 0 }, { opacity: 1, transform: 'translate(-50%, -50%)' });
+gsap.to(h2, 1.75, { opacity: 0, delay: 3 });
